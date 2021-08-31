@@ -1,0 +1,11 @@
+OBJS	= main.o
+SOURCE	= main.cpp
+OUT	= playpause.exe
+CC	 = g++
+LFLAGS	 = -static -static-libgcc -static-libstdc++
+
+all: main.cpp
+	$(CC) $(FLAGS) main.cpp -o $(OUT) $(LFLAGS) 
+
+clean:
+	
