@@ -1,10 +1,15 @@
 SOURCE	= main.cpp
-OUT		= build/utilFunctions.exe
+OUT		= build/
 CC 		= g++
-LFLAGS 	= -Ofast -static -static-libgcc -static-libstdc++ -lole32
+LFLAGS 	= -static -static-libgcc -static-libstdc++ -O3
 
-all: main.cpp
-	$(CC) $(FLAGS) main.cpp -o $(OUT) $(LFLAGS) 
+all: media volume
+
+media: media.cpp
+	$(CC) $(FLAGS) media.cpp -o $(OUT)media.exe $(LFLAGS)
+
+volume: volume.cpp
+	$(CC) $(FLAGS) volume.cpp -o $(OUT)volume.exe $(LFLAGS) -lole32
 
 clean:
 	del "build" /Q
