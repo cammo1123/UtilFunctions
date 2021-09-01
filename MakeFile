@@ -1,11 +1,10 @@
-OBJS	= main.o
 SOURCE	= main.cpp
-OUT	= playpause.exe
-CC	 = g++
-LFLAGS	 = -static -static-libgcc -static-libstdc++
+OUT		= build/utilFunctions.exe
+CC 		= g++
+LFLAGS 	= -Ofast -static -static-libgcc -static-libstdc++ -lole32
 
 all: main.cpp
 	$(CC) $(FLAGS) main.cpp -o $(OUT) $(LFLAGS) 
 
 clean:
-	
+	del "build" /Q
