@@ -1,5 +1,15 @@
 #include <Windows.h>
 #include <iostream>
+int strcmp(char *s1, char *s2)
+{
+	for (; *s1 && *s2; s1++, s2++)
+	{
+		int res = *s1 - *s2;
+		if (res)
+			return res;
+	}
+	return *s1 - *s2;
+}
 
 void SendKey(BYTE virtualKey)
 {
@@ -9,6 +19,24 @@ void SendKey(BYTE virtualKey)
 
 int main(int argc, char *argv[])
 {
-	SendKey(VK_MEDIA_PLAY_PAUSE);
+	if (strcmp(argv[1], (char *)"--media") == 0)
+	{
+		if (strcmp(argv[2], (char *)"playpause") == 0)
+		{
+			SendKey(VK_MEDIA_PLAY_PAUSE);
+		}
+		else if (strcmp(argv[2], (char *)"next") == 0)
+		{
+			SendKey(VK_MEDIA_NEXT_TRACK);
+		}
+		else if (strcmp(argv[2], (char *)"prev") == 0)
+		{
+			SendKey(VK_MEDIA_PREV_TRACK);
+		}
+		else if (strcmp(argv[2], (char *)"stop") == 0)
+		{
+			SendKey(VK_MEDIA_STOP);
+		}
+	}
 	return 0;
 }
